@@ -15,20 +15,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::group(['middleware' => ['web']], function(){
 Route::auth();
 Route::get('/home', 'HomeController@index');
+
+
+
+//Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'guest:admin'], function() {
+//  后台登录
+Route::get('admin/login', 'Admin\AuthController@getLogin');
+Route::post('admin/login', 'Admin\AuthController@postLogin');
+Route::get('admin/register', 'Admin\AuthController@getRegister');
+Route::post('admin/register', 'Admin\AuthController@postRegister');
+Route::get('admin/logout', 'Admin\AuthController@logout');
+
+// 后台首页
+Route::get('/admin', 'Admin\IndexController@index');
 //});
 
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'guest:admin'], function() {
-	//  后台登录
-	Route::get('login', 'AuthController@getLogin');
-    Route::post('login', 'AuthController@postLogin');
-    Route::get('register', 'AuthController@getRegister');
-    Route::post('register', 'AuthController@postRegister');
-    Route::get('logout', 'AuthController@logout');
-
-    // 后台首页
-    Route::get('/', 'AdminController@index');
+// 后台管理
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin.auth.login'], function() {
+	Route::get('/admins/adminlist','AdminController@index');
 });

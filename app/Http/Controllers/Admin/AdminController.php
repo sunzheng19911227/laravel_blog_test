@@ -3,23 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
+use App\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Auth;
 
 class AdminController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
-
-    public function index()
-    {
-        $admin = Auth::guard('admin')->user();
-        return $admin->name;
-    }
-
+	//获取管理员列表
+	public function index() {
+		
+		echo '123123123';exit;
+	}
 }
