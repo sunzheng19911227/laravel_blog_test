@@ -18,8 +18,6 @@ Route::get('/', function () {
 Route::auth();
 Route::get('/home', 'HomeController@index');
 
-
-
 //Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'guest:admin'], function() {
 //  后台登录
 Route::get('admin/login', 'Admin\AuthController@getLogin');
@@ -35,5 +33,5 @@ Route::get('/admin', 'Admin\IndexController@index');
 
 // 后台管理
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin.auth.login'], function() {
-	Route::get('/admins/adminlist','AdminController@index');
+	Route::resource('/admins/adminlist','AdminController@index');
 });

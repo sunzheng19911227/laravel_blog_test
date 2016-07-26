@@ -18,6 +18,7 @@ class CreatePermissionsTable extends Migration
             $table->integer('pid');
             $table->string('name');
             $table->string('label');
+            $table->string('url');
             $table->string('description')->nullable();
             $table->tinyInteger('is_display');
             $table->string('sort_order');

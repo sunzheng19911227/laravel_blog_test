@@ -155,7 +155,7 @@
                 </li>
                 <li class="menu-list"><a href="index_alt.html"><i class="fa fa-file-text"></i> <span>权限管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="{{ url('/admin/admins')}}"> 管理员管理</a></li>
+                        <li><a href="{{ url('/admin/admins/adminlist')}}"> 管理员管理</a></li>
                         <li><a href="invoice.html"> Invoice</a></li>
                         <li><a href="pricing_table.html"> Pricing Table</a></li>
                         <li><a href="timeline.html"> Timeline</a></li>
